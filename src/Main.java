@@ -4,71 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner sc = new Scanner(System.in);
-    static Basket basket = new Basket();
-    static Cart cart = new Cart();
+    static Scanner sc = new Scanner(System.in); // Scanner p.61
+    static List<Product> cartList = new ArrayList<>();
 
-//    static ArrayList<Menu> menuList = new ArrayList<>(
-//    Menu menu1 = new Menu(1,"떡볶이","맛있는 신전, 치즈, 로제 떡볶이"),
-//    Menu menu2 = new Menu(2,"튀김","바삭바삭 튀김들"),
-//    Menu menu3 = new Menu(2,"라이스","든든한 밥류"),
-//    Menu menu4 = new Menu(2,"음료","시원한 음료")
-//    );
 
-     // 메뉴리스트
-    static List<Menu> menuList = Arrays.asList(
-            new Menu(1, "떡볶이", "맛있는 신전, 치즈, 로제 떡볶이"),
-            new Menu(2, "튀김", "바삭바삭 튀김들"),
-            new Menu(3, "라이스", "든든한 밥류"),
-            new Menu(4, "음료", "시원한 음료")
-    );
-     //주문 및 취소
-    static List<Order> orderList = Arrays.asList(
-            new Order(5, "주문", "장바구니를 확인 후 주문합니다."),
-            new Order(6, "취소", "진행중인 주문을 취소합니다.")
-    );
-    // 상품리스트
-    static List<Product> itemList1 = Arrays.asList(
-            new Product(1, "신전떡볶이", 3500, "매콤하고 맛있는 국물 떡볶이"),
-            new Product(2, "치즈떡볶이", 5500, "모짜렐라 치즈가 듬뿍"),
-            new Product(3, "로제떡볶이", 5500, "신전과 로제의 환상 콜라보")
-    );
-    static List<Product> itemList2 = Arrays.asList(
-            new Product(1, "오뎅튀김", 1700, "5개, 신전 오리지널 오뎅튀김"),
-            new Product(2, "김말이튀김", 1700, "3개, 튀김계의 대표주자"),
-            new Product(3, "치즈스틱", 2000, "3개, 고소한 치즈가 쭉~~스틱"),
-            new Product(4, "닭껍질튀김", 2500, "100g, 바삭쫄깃한 닭껍질튀김")
-        );
-    static List<Product> itemList3 = Arrays.asList(
-            new Product(1,"신전치즈김밥",4000,"치즈가 들어간 매콤신전김밥"),
-            new Product(2,"스팸마요컵밥",4000,"스팸마요가 들어간 신전컵밥"),
-            new Product(3,"참치마요컵밥",4000,"고소한 참치마요 신전컵밥"),
-            new Product(4,"치킨마요컵밥",4000,"맛있는 치킨마요 신전컵밥")
-    );
-
-    static List<Product> itemList4 = Arrays.asList(
-            new Product(1,"콜라",2000,"시원한 콜라"),
-            new Product(2,"사이다",2000,"청량한 사이다"),
-            new Product(3,"쿨피스",2000,"달달한 쿨피스")
-    );
 
     public static void main(String[] args) {
+        Order orderArrList = new Order();
 
-//        ArrayList<Menu> menuArrayList = new ArrayList<>();
-//        menuArrayList.addAll(menuList);
-//        for (Menu menu : menuArrayList) {
-//            System.out.println(menu);
-//        }
-//
-//        ArrayList<Product> productArrayList = new ArrayList<>();
-//        productArrayList.addAll(productList);
-//        for (Product item1 : productArrayList) {
-//            System.out.println(item1);
-//        }
-//
-//        for (Menu menu : menuList) {
-//            System.out.println(menu);
-//        }
 
         while (true) {
             // 메인페이지
@@ -76,86 +19,129 @@ public class Main {
             System.out.println("아래 메뉴판을 보시고 메뉴를 골라 번호를 입력해주세요.");
             System.out.println("----------------------------------\n");
             System.out.println("[ 신전떡볶이 MENU ]");
-            for (Menu menu : menuList) {
+            for (Menu menu : Item.menuList) {
                 System.out.println(menu);
             }
             System.out.println("\n[ ORDER MENU ]");
-            for (Order order : orderList) {
+            for (Order order : Item.orderList) {
                 System.out.println(order);
-            }
-            System.out.println("해당 번호를 입력해주세요.");
-            int menuNum = sc.nextInt();
+            } // 번호 입력 시 상세메뉴판 페이지
+            System.out.println("\n해당 번호를 입력해주세요.");
+            String mainNum = sc.nextLine();
+            int menuNum = Integer.parseInt(mainNum);
 
-            if (menuNum == 1) {
-                System.out.println("\"신전떡볶이\"에 오신걸 환영합니다!");
-                System.out.println("아래 상품메뉴판을 보시고 상품을 골라 번호를 입력해주세요.\n");
-                System.out.println("[ 떡볶이 메뉴 ]");
-                for (Product product : itemList1) {
-                    System.out.println(product);
-                }
-                System.out.println("0. 메뉴판");
-                int orderNum = sc.nextInt();
+            if (menuNum == 1) { // 떡볶이 상세페이지
+                orderArrList.orderTitle(menuNum,Item.itemList1);
 
-                if (orderNum == 1){
-                    Product tbk1 = itemList1.get(0);
-                    System.out.println("\"" + tbk1 + "\"");
-                    System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
-                    System.out.println("1. 확인 \t\t 2. 취소");
-                }
-                int cartNum = sc.nextInt();
-                switch (cartNum) {
-                    case 1:
-                        ArrayList<Product> itemArrList1 = new ArrayList<>();
-                        itemArrList1.add(itemList1.get(0));
-                        System.out.println(itemArrList1 + " 가 장바구니에 추가되었습니다.\n");
-//                        for (Product item1 : itemArrList1) {
-//                            System.out.println(item1);
-//                        }
-                         break;
-                    case 2:
-                        System.out.println("취소되었습니다.\n");
-                    case 0:
-                        System.out.println("0. 메뉴판");
-                        return;
-                    default:
-                        System.out.println("잘못 입력하셨습니다.");
-                        break;
+                String itemNum = sc.nextLine();// 장바구니 추가 요청
+                int num1 = Integer.parseInt(itemNum);
+                Product product = orderArrList.orderRequest(num1,Item.itemList1);
+
+                String itemNum1 = sc.nextLine();// 장바구니 추가
+                int num2 = Integer.parseInt(itemNum1);
+                if (num2 == 1) {
+                    cartList.add(product);
+                    System.out.println(product.name + " 가 장바구니에 추가되었습니다.\n");
+                } else {
+                    System.out.println("취소되었습니다.\n");
                 }
 
-            } else if (menuNum == 2) {
-                System.out.println("\"신전떡볶이\"에 오신걸 환영합니다!");
-                System.out.println("아래 상품메뉴판을 보시고 상품을 골라 번호를 입력해주세요.\n");
-                System.out.println("[ 튀김 메뉴 ]");
-                for (Product product : itemList2) {
-                    System.out.println(product);
+            } else if (menuNum == 2) { // 튀김 상세페이지
+                orderArrList.orderTitle(menuNum,Item.itemList2);
+
+                String itemNum = sc.nextLine();// 장바구니 추가 요청
+                int num1 = Integer.parseInt(itemNum);
+                Product product = orderArrList.orderRequest(num1,Item.itemList2);
+
+                String itemNum1 = sc.nextLine();// 장바구니 추가
+                int num2 = Integer.parseInt(itemNum1);
+                if (num2 == 1) {
+                    cartList.add(product);
+                    System.out.println(product.name + " 가 장바구니에 추가되었습니다.\n");
+                } else {
+                    System.out.println("취소되었습니다.\n");
                 }
-                int menuNum1 = sc.nextInt();
+
             } else if (menuNum == 3) {
-                System.out.println("\"신전떡볶이\"에 오신걸 환영합니다!");
-                System.out.println("아래 상품메뉴판을 보시고 상품을 골라 번호를 입력해주세요.\n");
-                System.out.println("[ 라이스 메뉴 ]");
-                for (Product product : itemList3) {
-                    System.out.println(product);
-                }
-                int menuNum1 = sc.nextInt();
-            } else if (menuNum == 4){
-                System.out.println("\"신전떡볶이\"에 오신걸 환영합니다!");
-                System.out.println("아래 상품메뉴판을 보시고 상품을 골라 번호를 입력해주세요.\n");
-                System.out.println("[ 음료 메뉴 ]");
-                for (Product product : itemList4) {
-                    System.out.println(product);
-                }
-                int menuNum1 = sc.nextInt();
+                orderArrList.orderTitle(menuNum,Item.itemList3);
 
-            } else if (menuNum == 5){
-                System.out.println("아래와 같이 주문하시겠습니까?");
-                System.out.println("\" [ Orders ] \"");
+                String itemNum = sc.nextLine();// 장바구니 추가 요청
+                int num1 = Integer.parseInt(itemNum);
+                Product product = orderArrList.orderRequest(num1,Item.itemList3);
 
-                for (Product cart : Cart.cartList){
-                    System.out.println(cart);
+                String itemNum1 = sc.nextLine();// 장바구니 추가
+                int num2 = Integer.parseInt(itemNum1);
+                if (num2 == 1) {
+                    cartList.add(product);
+                    System.out.println(product.name + " 가 장바구니에 추가되었습니다.\n");
+                } else {
+                    System.out.println("취소되었습니다.\n");
                 }
-                int menuNum1 = sc.nextInt();
+
+            } else if (menuNum == 4) {
+                orderArrList.orderTitle(menuNum,Item.itemList4);
+
+                String itemNum = sc.nextLine();// 장바구니 추가 요청
+                int num1 = Integer.parseInt(itemNum);
+                Product product = orderArrList.orderRequest(num1,Item.itemList4);
+
+                String itemNum1 = sc.nextLine();// 장바구니 추가
+                int num2 = Integer.parseInt(itemNum1);
+                if (num2 == 1) {
+                    cartList.add(product);
+                    System.out.println(product.name + " 가 장바구니에 추가되었습니다.\n");
+                } else {
+                    System.out.println("취소되었습니다.\n");
+                }
+
+            } else if (menuNum == 5) {
+                System.out.println("아래와 같이 주문하시겠습니까?\n");
+                System.out.println(" [ Orders ] ");
+//                System.out.println(cartList);
+                for (int i = 0; i < cartList.size(); i++) {
+                    Menu cartSave = cartList.get(i);
+                    System.out.println(cartSave.toString());
+                }
+                    System.out.println("\n [ Total ] ");
+                    int sum = 0;
+                    for (int j = 0; j < cartList.size(); j++) {
+                        sum += cartList.get(j).price;
+                    }
+                    System.out.println(sum);
+                    System.out.println("1. 주문 \t\t 2. 취소");
+                    String choiceNum1 = sc.nextLine();
+                    int num2 = Integer.parseInt(choiceNum1);
+                    try {
+                        switch (num2) {
+                            case 1:
+                                cartList.clear();
+                                System.out.println("주문이 완료되었습니다!");
+                                System.out.println("대기번호는 [ " + cartList.size() + "] 번 입니다.");
+                                System.out.println("3초 후 메뉴판으로 돌아갑니다.\n");
+                                Thread.sleep(3000);
+                        }
+                    } catch (Exception e) {
+                        return;
+                    }
+
+                } else if (menuNum == 6) {
+                     for (int i = 0; i < cartList.size(); i++) {
+                     Menu cartSave = cartList.get(i);
+                     System.out.println(cartSave.toString());
+                }
+                    System.out.println("\n진행하던 주문을 취소하시겠습니까?");
+                    System.out.println("1. 확인 \t\t 2. 메뉴판");
+                    String choiceNum1 = sc.nextLine();
+                    int num2 = Integer.parseInt(choiceNum1);
+                    switch (num2) {
+                        case 1:
+                            cartList.clear();
+                            System.out.println("진행하던 주문이 취소되었습니다.\n");
+                        case 2:
+                            break;
+                    } continue;
+                }
             }
         }
     }
-}
+
