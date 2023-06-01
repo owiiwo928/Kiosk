@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Item {
-    static List<Product> cartList = new ArrayList<>();
+    // p.417 Arrays.asList 배열 / p.188 ~ 190 static 참고
 
-    // 메뉴리스트 P.417 aslist 배열 / p.188 ~ 190 static 참고
+    // 메뉴리스트
     static List<Menu> menuList = Arrays.asList(
             new Menu(1, "떡볶이", "맛있는 신전, 치즈, 로제 떡볶이"),
             new Menu(2, "튀김", "바삭바삭 튀김들"),
@@ -41,7 +41,6 @@ public class Item {
             new Product(2,"사이다",2000,"청량한 사이다"),
             new Product(3,"쿨피스",2000,"달달한 쿨피스")
     );
-
 }
 
 
