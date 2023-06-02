@@ -1,15 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
-
 public class Order {
     public int num;
     public String name;
     public String desc;
-
-    @Override
-    public String toString() {
-        return num + ". " + name + "\t| " + desc;
-    }
 
     public Order(int num, String name, String desc) {
         this.num = num;
@@ -19,6 +13,11 @@ public class Order {
 
     public Order() {
     } // 생성자
+
+    @Override
+    public String toString() {
+        return num + ". " + name + "\t| " + desc;
+    }
 
     // 상세메뉴판 메서드
     public void orderTitle (int menuNum, List list){

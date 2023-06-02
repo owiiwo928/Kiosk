@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -114,8 +113,7 @@ public class Main {
                         switch (num2) {
                             case 1:
                                 System.out.println("주문이 완료되었습니다!");
-                                int cartSize = Main.cartList.size();
-                                System.out.println("대기번호는 [ " + cartSize + "] 번 입니다."); // cartList의 값을 int로 출력
+                                System.out.println("대기번호는 [ " + cartList.size() + "] 번 입니다.");
                                 cartList.clear(); // 완료된 주문 내역 지우기
                                 System.out.println("3초 후 메뉴판으로 돌아갑니다.\n");
                                 Thread.sleep(3000); // 쓰레드 sleep으로 3초 일시정지 후 메뉴판으로 돌아가기
@@ -139,7 +137,7 @@ public class Main {
                             System.out.println("진행하던 주문이 취소되었습니다.\n");
                         case 2:
                             break;
-                    } continue;
+                    }
                 }
             }
         }

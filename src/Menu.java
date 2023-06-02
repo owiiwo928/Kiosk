@@ -1,13 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Menu {
     public int num;
     public String name;
     public String desc;
 
     public Menu() {
-    }; // 생성자
+    } // 생성자
 
     public Menu(int num, String name, String desc) {
         this.num = num;

@@ -1,7 +1,5 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class Item {
     // p.417 Arrays.asList 배열 / p.188 ~ 190 static 참고
