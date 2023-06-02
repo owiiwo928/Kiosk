@@ -11,11 +11,13 @@ public class Item {
             new Menu(3, "라이스", "든든한 밥류"),
             new Menu(4, "음료", "시원한 음료")
     );
+
     //주문 및 취소
     static List<Order> orderArrList = Arrays.asList(
             new Order(5, "주문", "장바구니를 확인 후 주문합니다."),
             new Order(6, "취소", "진행중인 주문을 취소합니다.")
     );
+
     // 상품리스트
     static List<Product> itemList1 = Arrays.asList( //메소드
             new Product(1, "신전떡볶이", 3500, "매콤하고 맛있는 국물 떡볶이"),

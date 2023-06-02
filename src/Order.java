@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 public class Order {
     public int num;
@@ -28,6 +27,7 @@ public class Order {
             System.out.println(product);
         }
     }
+
     // 장바구니 추가 요청 메서드
     public Product orderRequest (int orderNum, List list){
         Product product = (Product)list.get(orderNum - 1);

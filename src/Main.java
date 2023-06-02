@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Main {
     static Scanner sc = new Scanner(System.in); // Scanner p.61
     static List<Product> cartList = new ArrayList<>();
+
     public static void main(String[] args) {
+
         Order orderList = new Order(); // Order 클래스 메서드
 
         while (true) {
@@ -27,9 +29,8 @@ public class Main {
             String mainNum = sc.nextLine();
             int menuNum = Integer.parseInt(mainNum);
 
-
             if (menuNum == 1) { // 떡볶이 상세페이지 (메서드 사용 / 장바구니 추가 제외)
-                orderList.orderTitle(menuNum,Item.itemList1); // item 클래스의 itemList 불러오기
+                orderList.orderTitle(menuNum,Item.itemList1); // Item 클래스의 itemList 불러오기
 
                 String itemNum = sc.nextLine();// 장바구니 추가 요청
                 int num1 = Integer.parseInt(itemNum);
@@ -95,7 +96,6 @@ public class Main {
             } else if (menuNum == 5) { // 주문 페이지
                 System.out.println("아래와 같이 주문하시겠습니까?\n");
                 System.out.println("[ Orders ]");
-//                System.out.println(cartList);
                 for (int i = 0; i < cartList.size(); i++) {
                     Menu cartSave = cartList.get(i);
                     System.out.println(cartSave);
@@ -104,8 +104,8 @@ public class Main {
                     int sum = 0;
                     for (int j = 0; j < cartList.size(); j++) {
                         sum += cartList.get(j).price;
-                    }
-                    System.out.println(sum + "원\n"); // fori문으로 주문된 메뉴 가격 합계(sum)
+                    } // fori문으로 주문된 메뉴 가격 합계(sum)
+                    System.out.println(sum + "원\n");
                     System.out.println("1. 주문 \t\t 2. 메뉴판");
                     String choiceNum = sc.nextLine();
                     int num2 = Integer.parseInt(choiceNum);
