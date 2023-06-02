@@ -14,7 +14,7 @@ public class Item {
             new Menu(4, "음료", "시원한 음료")
     );
     //주문 및 취소
-    static List<Order> orderList = Arrays.asList(
+    static List<Order> orderArrList = Arrays.asList(
             new Order(5, "주문", "장바구니를 확인 후 주문합니다."),
             new Order(6, "취소", "진행중인 주문을 취소합니다.")
     );

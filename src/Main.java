@@ -7,9 +7,10 @@ public class Main {
     static Scanner sc = new Scanner(System.in); // Scanner p.61
     static List<Product> cartList = new ArrayList<>();
     public static void main(String[] args) {
-        Order orderArrList = new Order(); // Order 클래스 메서드
+        Order orderList = new Order(); // Order 클래스 메서드
 
         while (true) {
+
             // 메인페이지
             System.out.println("\"신전떡볶이\"에 오신걸 환영합니다!");
             System.out.println("아래 메뉴판을 보시고 메뉴를 골라 번호를 입력해주세요.");
@@ -19,7 +20,7 @@ public class Main {
                 System.out.println(menu);
             } // 향상된 for문으로 메뉴를 세로로 정렬
             System.out.println("\n[ ORDER MENU ]");
-            for (Order order : Item.orderList) {
+            for (Order order : Item.orderArrList) {
                 System.out.println(order);
             }
             // 번호 입력 시 상세메뉴판 페이지
@@ -29,11 +30,11 @@ public class Main {
 
 
             if (menuNum == 1) { // 떡볶이 상세페이지 (메서드 사용 / 장바구니 추가 제외)
-                orderArrList.orderTitle(menuNum,Item.itemList1); // item 클래스의 itemList 불러오기
+                orderList.orderTitle(menuNum,Item.itemList1); // item 클래스의 itemList 불러오기
 
                 String itemNum = sc.nextLine();// 장바구니 추가 요청
                 int num1 = Integer.parseInt(itemNum);
-                Product product = orderArrList.orderRequest(num1,Item.itemList1);
+                Product product = orderList.orderRequest(num1,Item.itemList1);
 
                 String itemNum1 = sc.nextLine();// 장바구니 추가
                 int num2 = Integer.parseInt(itemNum1);
@@ -45,11 +46,11 @@ public class Main {
                 }
 
             } else if (menuNum == 2) { // 튀김 상세페이지
-                orderArrList.orderTitle(menuNum,Item.itemList2);
+                orderList.orderTitle(menuNum,Item.itemList2);
 
                 String itemNum = sc.nextLine();
                 int num1 = Integer.parseInt(itemNum);
-                Product product = orderArrList.orderRequest(num1,Item.itemList2);
+                Product product = orderList.orderRequest(num1,Item.itemList2);
 
                 String itemNum1 = sc.nextLine();
                 int num2 = Integer.parseInt(itemNum1);
@@ -61,11 +62,11 @@ public class Main {
                 }
 
             } else if (menuNum == 3) { // 라이스 상세페이지
-                orderArrList.orderTitle(menuNum,Item.itemList3);
+                orderList.orderTitle(menuNum,Item.itemList3);
 
                 String itemNum = sc.nextLine();
                 int num1 = Integer.parseInt(itemNum);
-                Product product = orderArrList.orderRequest(num1,Item.itemList3);
+                Product product = orderList.orderRequest(num1,Item.itemList3);
 
                 String itemNum1 = sc.nextLine();
                 int num2 = Integer.parseInt(itemNum1);
@@ -77,11 +78,11 @@ public class Main {
                 }
 
             } else if (menuNum == 4) { // 음료 상세페이지
-                orderArrList.orderTitle(menuNum,Item.itemList4);
+                orderList.orderTitle(menuNum,Item.itemList4);
 
                 String itemNum = sc.nextLine();
                 int num1 = Integer.parseInt(itemNum);
-                Product product = orderArrList.orderRequest(num1,Item.itemList4);
+                Product product = orderList.orderRequest(num1,Item.itemList4);
 
                 String itemNum1 = sc.nextLine();
                 int num2 = Integer.parseInt(itemNum1);
@@ -106,15 +107,16 @@ public class Main {
                         sum += cartList.get(j).price;
                     }
                     System.out.println(sum + "원\n"); // fori문으로 주문된 메뉴 가격 합계(sum)
-                    System.out.println("1. 주문 \t\t 2. 취소");
-                    String choiceNum1 = sc.nextLine();
-                    int num2 = Integer.parseInt(choiceNum1);
+                    System.out.println("1. 주문 \t\t 2. 메뉴판");
+                    String choiceNum = sc.nextLine();
+                    int num2 = Integer.parseInt(choiceNum);
                     try {
                         switch (num2) {
                             case 1:
-                                cartList.clear(); // 완료된 주문 내역 지우기
                                 System.out.println("주문이 완료되었습니다!");
-                                System.out.println("대기번호는 [ " + cartList.size() + "] 번 입니다.");
+                                int cartSize = Main.cartList.size();
+                                System.out.println("대기번호는 [ " + cartSize + "] 번 입니다."); // cartList의 값을 int로 출력
+                                cartList.clear(); // 완료된 주문 내역 지우기
                                 System.out.println("3초 후 메뉴판으로 돌아갑니다.\n");
                                 Thread.sleep(3000); // 쓰레드 sleep으로 3초 일시정지 후 메뉴판으로 돌아가기
                         }
@@ -129,8 +131,8 @@ public class Main {
                 }
                     System.out.println("\n진행하던 주문을 취소하시겠습니까?");
                     System.out.println("1. 확인 \t\t 2. 메뉴판");
-                    String choiceNum1 = sc.nextLine();
-                    int num2 = Integer.parseInt(choiceNum1);
+                    String choiceNum = sc.nextLine();
+                    int num2 = Integer.parseInt(choiceNum);
                     switch (num2) {
                         case 1:
                             cartList.clear();

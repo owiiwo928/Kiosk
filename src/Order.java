@@ -18,7 +18,7 @@ public class Order {
     }
 
     public Order() {
-    }
+    } // 생성자
 
     // 상세메뉴판 메서드
     public void orderTitle (int menuNum, List list){
