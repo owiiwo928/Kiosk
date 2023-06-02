@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         Order orderList = new Order(); // Order 클래스 메서드
-        int cartCount = 1;
+        int cartCount = 1; // 대기번호 값
 
         while (true) {
 

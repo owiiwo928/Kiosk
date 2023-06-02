@@ -24,22 +24,25 @@ public class Item {
             new Product(2, "치즈떡볶이", 5500, "모짜렐라 치즈가 듬뿍"),
             new Product(3, "로제떡볶이", 5500, "신전과 로제의 환상 콜라보")
     );
+
     static List<Product> itemList2 = Arrays.asList(
             new Product(1, "오뎅튀김", 1700, "5개, 신전 오리지널 오뎅튀김"),
             new Product(2, "김말이튀김", 1700, "3개, 튀김계의 대표주자"),
             new Product(3, "치즈스틱", 2000, "3개, 고소한 치즈가 쭉~~스틱"),
             new Product(4, "닭껍질튀김", 2500, "100g, 바삭쫄깃한 닭껍질튀김")
     );
+
     static List<Product> itemList3 = Arrays.asList(
             new Product(1, "신전치즈김밥", 4000, "치즈가 들어간 매콤신전김밥"),
             new Product(2, "스팸마요컵밥", 4000, "스팸마요가 들어간 신전컵밥"),
             new Product(3, "참치마요컵밥", 4000, "고소한 참치마요 신전컵밥"),
             new Product(4, "치킨마요컵밥", 4000, "맛있는 치킨마요 신전컵밥")
     );
+
     static List<Product> itemList4 = Arrays.asList(
-            new Product(1,"콜라",2000,"시원한 콜라"),
-            new Product(2,"사이다",2000,"청량한 사이다"),
-            new Product(3,"쿨피스",2000,"달달한 쿨피스")
+            new Product(1, "콜라", 2000, "시원한 콜라"),
+            new Product(2, "사이다", 2000, "청량한 사이다"),
+            new Product(3, "쿨피스", 2000, "달달한 쿨피스")
     );
 }
 

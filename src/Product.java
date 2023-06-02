@@ -6,6 +6,7 @@ public class Product extends Menu { // Menu 클래스 상속
         this.price = price;
     }
 
+
     @Override
     public String toString() {
         return num + ". " + name + "\t| " + price + "원 | " + desc;
